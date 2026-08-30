@@ -22,5 +22,10 @@
 - Waterloo 2026 intake is closed. For September 2027, international-student eligibility must remain 'official announcement pending' until an official admissions notice is published.
 - Waterloo Preclinical Track tuition currently used on this site: US$23,392 per term, based on the provided 2026 Waterloo material; re-check against the intake-specific official notice before future publication updates.
 
+## Homepage shortcut implementation
+- Preserve the original large index.html unchanged.
+- Homepage detail-page shortcuts are injected by the Netlify Edge Function in netlify/edge-functions/homepage-shortcuts.ts, configured in netlify.toml.
+- Keep shortcut treatment thin and institutional (text links under relevant sections), not large SEO cards.
+
 ## Deployment
 - Preview-first. Continue refinements on the existing feature branch / PR until final approval, then merge main once and verify Production.
