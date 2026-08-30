@@ -38,7 +38,7 @@
 - Localize and summarize independently in Korean; do not copy or simply translate the source article.
 - Every published news page must preserve the exact SGU official source link and source title.
 - Update news-data.json, news.html behavior/content as needed, the new news detail page, and sitemap.xml together.
-- Homepage displays the latest three selected items.
+- Homepage displays the latest four selected items in a 2-column by 2-row grid on desktop; mobile collapses to one column.
 - Preview-first: automated discovery/publishing work must create or update a Preview PR and must not merge to Production without user approval.
 
 ## Deployment
