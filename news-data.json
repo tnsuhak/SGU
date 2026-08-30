@@ -1,0 +1,36 @@
+{
+  "updated_at": "2026-08-30",
+  "source": "St. George's University official news",
+  "items": [
+    {
+      "id": "sickle-cell-care-grenada-2026",
+      "date": "2026-08-21",
+      "category": "Research · School of Medicine",
+      "title": "SGU, 그레나다 겸상적혈구질환 응급 대응 개선 프로젝트 추진",
+      "summary": "SGU 의과대학 교수진과 학생들이 그레나다 보건 당국·환자단체와 함께 응급 상황에서 치료 정보를 빠르게 확인할 수 있는 Sickle Cell Care Card 개발을 추진하고 있습니다.",
+      "path": "/news/sickle-cell-care-grenada-2026.html",
+      "source_title": "SGU Initiative Aims to Strengthen Sickle Cell Care Across Grenada",
+      "source_url": "https://www.sgu.edu/news-and-events/sgu-boost-sickle-cell-care-in-grenada/"
+    },
+    {
+      "id": "white-coat-grenada-2026",
+      "date": "2026-06-12",
+      "category": "Student Life · School of Medicine",
+      "title": "SGU 의대 신입생, 그레나다 캠퍼스 White Coat Ceremony 진행",
+      "summary": "SGU School of Medicine의 새 의대생들이 그레나다 캠퍼스에서 White Coat Ceremony를 통해 의학 교육의 공식적인 첫 단계를 시작했습니다.",
+      "path": "/news/white-coat-grenada-2026.html",
+      "source_title": "Newest Cohort of Future Doctors Welcomed at SGU White Coat Ceremony",
+      "source_url": "https://www.sgu.edu/news-and-events/newest-cohort-of-future-doctors-at-sgu/"
+    },
+    {
+      "id": "match-day-2026",
+      "date": "2026-03-24",
+      "category": "Residency · School of Medicine",
+      "title": "SGU 2026 Match Day, 804명 이상 미국 레지던시 배치",
+      "summary": "2026년 Match Day 기준 804명 이상의 SGU 학생과 졸업생이 미국 1년차 레지던시 포지션을 확보했고, 23개 전문분야에 진출했습니다.",
+      "path": "/news/match-day-2026.html",
+      "source_title": "Match Day 2026: 804 SGU Students and Graduates Match into Residencies",
+      "source_url": "https://www.sgu.edu/news-and-events/match-day-2026-804-sgu-students-match/"
+    }
+  ]
+}
