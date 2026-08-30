@@ -13,6 +13,8 @@
 - waterloo.html: SGU + University of Waterloo track
 - usmle-residency.html: USMLE and residency outcomes
 - us-doctor-pathway.html: US doctor pathway; keep subordinate to the outcomes page and do not promote heavily on the homepage
+- news.html: SGU School of Medicine news archive for Korean students
+- news/*.html: indexable localized news detail pages with official-source links
 
 ## Source / claim rules
 - Use SGU and relevant regulator / partner primary sources for factual claims.
@@ -24,8 +26,20 @@
 
 ## Homepage shortcut implementation
 - Preserve the original large index.html unchanged.
-- Homepage detail-page shortcuts are injected by the Netlify Edge Function in netlify/edge-functions/homepage-shortcuts.ts, configured in netlify.toml.
+- Homepage detail-page shortcuts and the homepage SGU NEWS section are injected by the Netlify Edge Function in netlify/edge-functions/homepage-shortcuts.ts, configured in netlify.toml.
 - Keep shortcut treatment thin and institutional (text links under relevant sections), not large SEO cards.
+- Homepage news cards load their current ordering/content from news-data.json, with server-rendered fallback cards retained for crawlability and resilience.
+
+## News automation
+- Primary discovery source: https://www.sgu.edu/news-and-events/ and SGU School of Medicine official pages.
+- Prioritize: admissions/program changes, Waterloo/Northumbria developments, tuition/scholarships, student education, clinical training, research opportunities, accreditation/recognition, USMLE/residency/match outcomes, and other items useful to prospective Korean students.
+- Deprioritize routine ceremonies, generic promotion, unrelated veterinary/arts/graduate-school news, and low-value event notices unless they materially help recruitment or student decision-making.
+- Default news image policy is text-first / no image.
+- Localize and summarize independently in Korean; do not copy or simply translate the source article.
+- Every published news page must preserve the exact SGU official source link and source title.
+- Update news-data.json, news.html behavior/content as needed, the new news detail page, and sitemap.xml together.
+- Homepage displays the latest three selected items.
+- Preview-first: automated discovery/publishing work must create or update a Preview PR and must not merge to Production without user approval.
 
 ## Deployment
 - Preview-first. Continue refinements on the existing feature branch / PR until final approval, then merge main once and verify Production.
