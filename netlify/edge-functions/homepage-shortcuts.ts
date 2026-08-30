@@ -7,7 +7,9 @@ export default async (_request: Request, context: any) => {
 
   const css = `
 <style id="sgu-detail-shortcut-style">
-.section-shortcuts{background:#fff;padding:0 24px 28px}.section-shortcuts .shortcut-inner{max-width:1180px;margin:0 auto;border-top:1px solid rgba(28,30,36,.14);padding-top:15px;display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap}.section-shortcuts .shortcut-label{font-size:11px;font-weight:800;letter-spacing:.12em;color:#71747b;text-transform:uppercase}.section-shortcuts a{position:relative;color:#20226c;text-decoration:none;font-size:13px;font-weight:800;padding-right:15px}.section-shortcuts a:after{content:'→';position:absolute;right:0;top:0}.section-shortcuts a:hover{text-decoration:underline}@media(max-width:700px){.section-shortcuts{padding:0 18px 24px}.section-shortcuts .shortcut-inner{gap:8px 14px}.section-shortcuts .shortcut-label{width:100%}}
+.section-shortcuts{background:#fff;padding:0 24px 28px}.section-shortcuts .shortcut-inner{max-width:1180px;margin:0 auto;border-top:1px solid rgba(28,30,36,.14);padding-top:15px;display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap}.section-shortcuts .shortcut-label{font-size:11px;font-weight:800;letter-spacing:.12em;color:#71747b;text-transform:uppercase}.section-shortcuts a{position:relative;color:#20226c;text-decoration:none;font-size:13px;font-weight:800;padding-right:15px}.section-shortcuts a:after{content:'→';position:absolute;right:0;top:0}.section-shortcuts a:hover{text-decoration:underline}
+.sgu-consult-btns{display:flex!important;gap:12px!important;flex-wrap:wrap!important;justify-content:center!important}.sgu-consult-btns a{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 22px;border-radius:999px;text-decoration:none!important;font-size:15px;font-weight:800;transition:.2s ease}.sgu-consult-btns .kakao{background:#fee500!important;color:#191919!important;border:1px solid #fee500!important}.sgu-consult-btns .phone{background:#fff!important;color:#20226c!important;border:1px solid rgba(255,255,255,.9)!important}.sgu-consult-btns a:hover{transform:translateY(-1px);filter:brightness(.98)}
+@media(max-width:700px){.section-shortcuts{padding:0 18px 24px}.section-shortcuts .shortcut-inner{gap:8px 14px}.section-shortcuts .shortcut-label{width:100%}.sgu-consult-btns{display:grid!important;grid-template-columns:1fr!important;width:100%!important}.sgu-consult-btns a{width:100%!important}}
 </style>`;
 
   if (!html.includes('sgu-detail-shortcut-style')) {
@@ -31,6 +33,17 @@ export default async (_request: Request, context: any) => {
   if (!html.includes('/md-program.html')) html = html.replace(quickCompareAnchor, pathwayLinks + quickCompareAnchor);
   if (!html.includes('/northumbria-newcastle.html')) html = html.replace(chooseAnchor, campusLinks + chooseAnchor);
   if (!html.includes('/usmle-residency.html')) html = html.replace(faqAnchor, outcomeLinks + faqAnchor);
+
+  // Remove the non-functional inquiry form entirely.
+  html = html.replace(/<!-- ===================== INQUIRY FORM ===================== -->[\s\S]*?<section id=["']inquiry-form["'][\s\S]*?<\/section>/i, '');
+
+  // Any old links that pointed to the removed form now go to the consultation CTA.
+  html = html.replaceAll('href="#inquiry-form"', 'href="#inquiry"');
+  html = html.replaceAll("href='#inquiry-form'", "href='#inquiry'");
+
+  // Replace the old CTA buttons with direct consultation actions.
+  const consultButtons = `<div class="cta-btns sgu-consult-btns"><a class="kakao" href="https://open.kakao.com/o/slehLvKi" target="_blank" rel="noopener">카카오톡 상담</a><a class="phone" href="tel:01051500105">전화 상담 · 010-5150-0105</a></div>`;
+  html = html.replace(/<div class=["']cta-btns["']>[\s\S]*?<\/div>/i, consultButtons);
 
   const headers = new Headers(response.headers);
   headers.delete('content-length');
