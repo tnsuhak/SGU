@@ -30,6 +30,14 @@
 - Keep shortcut treatment thin and institutional (text links under relevant sections), not large SEO cards.
 - Homepage news cards load their current ordering/content from news-data.json, with server-rendered fallback cards retained for crawlability and resilience.
 
+## Asset URL portability
+- Preserve the original large homepage HTML rather than bulk-rewriting embedded/saved-page markup.
+- netlify/edge-functions/asset-url-normalizer.ts normalizes relative asset references against the current request URL on all HTML responses.
+- Normalize image/media/script `src`, poster and common lazy-load attributes, `srcset`, inline CSS `url(...)`, stylesheet/icon/preload/manifest links, and Open Graph/Twitter preview images.
+- Leave ordinary anchor/navigation `href` values unchanged so internal navigation and conversion links keep their intended behavior.
+- Do not rewrite already absolute URLs, protocol-relative URLs, data/blob/mailto/tel/javascript URLs, or fragment references.
+- Use request-derived hostnames instead of hard-coding Production so Deploy Preview validates its own assets and Production automatically uses the Production host after merge.
+
 ## News automation
 - Primary discovery source: https://www.sgu.edu/news-and-events/ and SGU School of Medicine official pages.
 - Prioritize: admissions/program changes, Waterloo/Northumbria developments, tuition/scholarships, student education, clinical training, research opportunities, accreditation/recognition, USMLE/residency/match outcomes, and other items useful to prospective Korean students.
