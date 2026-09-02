@@ -1,3 +1,7 @@
 [[edge_functions]]
+function = "asset-url-normalizer"
+path = "/*"
+
+[[edge_functions]]
 function = "homepage-shortcuts"
 path = "/*"
